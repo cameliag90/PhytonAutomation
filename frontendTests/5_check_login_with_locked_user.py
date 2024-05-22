@@ -47,6 +47,5 @@ class TestLoginWithInvalidCredentials:
         assert len(self.driver.find_elements(By.CLASS_NAME, 'error_icon')) == 0
 
 
-
 if __name__ == "__main__":
     pytest.main()

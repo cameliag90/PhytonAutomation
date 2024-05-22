@@ -7,7 +7,7 @@ class TestLoginPageElements:
     @classmethod
     def setup_class(cls):
         # Setup the WebDriver
-        cls.driver = webdriver.Chrome()  # Ensure you have the ChromeDriver installed
+        cls.driver = webdriver.Chrome()
         cls.driver.get('https://www.saucedemo.com/')
 
     @classmethod
