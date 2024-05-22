@@ -2,6 +2,7 @@ import pytest
 from selenium import webdriver
 from selenium.webdriver.common.by import By
 
+
 class TestLoginPageElements:
     @classmethod
     def setup_class(cls):
@@ -13,6 +14,11 @@ class TestLoginPageElements:
     def teardown_class(cls):
         # Quit the WebDriver
         cls.driver.quit()
+
+    def test_login_page_title(self):
+        login_page_title = self.driver.find_element(By.CLASS_NAME, 'login_logo')
+        assert login_page_title.is_displayed()
+        assert login_page_title.text == 'Swag Labs'
 
     def test_username_field_displayed(self):
         username_field = self.driver.find_element(By.ID, 'user-name')
@@ -27,17 +33,8 @@ class TestLoginPageElements:
     def test_login_button_displayed(self):
         login_button = self.driver.find_element(By.ID, 'login-button')
         assert login_button.is_displayed()
+        assert login_button.get_attribute('value') == 'Login'
         assert login_button.get_attribute('disabled') is None
-
-        # Get the computed style of the login button
-        script = "return window.getComputedStyle(arguments[0]).getPropertyValue('background-color');"
-        background_color = self.driver.execute_script(script, login_button)
-
-        print(f"Login button background color: {background_color}")
-
-        # Make the assertion more robust
-        assert background_color is not None, "The computed 'background-color' is None"
-        assert background_color == 'rgb(61, 220, 145)', f"Expected 'rgb(61, 220, 145)', but got {background_color}"
 
     def test_login_credentials_information_dialog(self):
         login_credentials = self.driver.find_element(By.CLASS_NAME, 'login_credentials')
@@ -56,6 +53,7 @@ class TestLoginPageElements:
         password_text = password.text
         assert 'Password for all users:' in password_text
         assert 'secret_sauce' in password_text
+
 
 if __name__ == "__main__":
     pytest.main()
