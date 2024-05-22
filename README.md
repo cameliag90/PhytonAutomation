@@ -1,4 +1,3 @@
-<<<<<<< HEAD
 # PhytonAutomation
 =======
 1. Install PyCharm:
@@ -40,4 +39,4 @@ When setting up a new environment, you can install all required packages using t
 - Choose "Run 'filename'" to execute your test script.
 or
 - Open terminal and run: pytest path_to_test - for one test (ex: pytest backendTests/1_get_users_list.py )
->>>>>>> master
+
